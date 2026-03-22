@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NordTalk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="loadingScreen" class="loadingScreen">
+  <div class="loadingContent">
+    <div class="loadingLogo">
+      N
+    </div>
+    <div class="loadingTitle">
+      NordTalk
+    </div>
+    <div class="loadingSpinner"></div>
+  </div>
+</div>
+  <div id="app" class="app">
+    <div id="loginScreen" class="nt-login">
+      <div class="nt-login-bg"></div>
+      <div class="nt-login-card">
+        <div class="nt-login-header">
+           <div class="nt-logo">N</div>
+          <div class="nt-title">NordTalk</div>
+          <div class="nt-subtitle">Secure messaging</div>
+        </div>
+        <!-- LOGIN -->
+        <div id="loginForm" class="nt-form">
+          <div class="nt-field">
+            <input id="loginPhone" placeholder="Phone number">
+          </div>
+          <button id="loginBtn" class="nt-primary-btn">
+            Login
+          </button>
+          <div class="nt-switch">
+            No account?
+            <span id="goRegister">Create account</span>
+          </div>
+        </div>
+        <!-- REGISTER -->
+        <div id="registerForm" class="nt-form hidden">
+          <div class="nt-field">
+            <input id="regName" placeholder="Full name">
+          </div>
+          <div class="nt-field">
+            <input id="regPhone" placeholder="Phone number">
+          </div>
+          <div class="nt-field">
+            <input id="regEmail" placeholder="Email">
+          </div>
+          <button id="registerBtn" class="nt-primary-btn">
+            Create account
+          </button>
+          <div class="nt-switch">
+            Already have account?
+            <span id="goLogin">Login</span>
+          </div>
+        </div>
+
+        <!-- VERIFY -->
+        <div id="verifyForm" class="nt-form hidden">
+          <div class="nt-verify-text">
+            Enter the verification code
+          </div>
+          <div class="nt-field">
+            <input id="verifyCode" placeholder="Verification code">
+          </div>
+          <button id="verifyBtn" class="nt-primary-btn">
+            Verify
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="topbar">
+      <button class="backBtnLeft backCorner" id="btnAppBack" title="Back">←</button>
+
+      <div class="top-center">
+        <div class="brandTitle">NordTalk</div>
+        <div class="brandSub" id="meLine">—</div>
+      </div>
+
+      <div class="profileMenu">
+        <div id="profileAvatar" class="profileAvatarSmall"></div>
+        <div id="profileDropdown" class="profileDropdown hidden">
+          <button id="menuProfile">Profile</button>
+          <button id="menuSettings">Settings</button>
+          <button id="menuLogout">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap" id="wrap">
+      <main class="screen screen-home" id="screenHome">
+        <div class="searchBox">
+          <input id="searchChats" placeholder="Search chats or contacts">
+        </div>
+        <button id="btnNewChat" class="fab-btn">+</button>
+        <section class="list" id="list"></section>
+      </main>
+
+      <main class="screen screen-chat" id="screenChat">
+        <div class="chatHeader">
+          <button class="backBtn" id="btnBack" title="Back to chats">←</button>
+          <div class="chatHeaderText">
+            <div class="chatTitle" id="chatTitle">Select a chat</div>
+            <div class="globalUnread hidden" id="globalUnread"></div>
+            <div class="chatMeta" id="chatMeta">—</div>
+          </div>
+        </div>
+
+        <section class="messages" id="messages"></section>
+
+        <div class="composer">
+          <button class="composerIcon" id="emojiBtn">😀</button>
+          <div class="composerInputWrap">
+            <textarea
+              id="msg"
+              maxlength="2000"
+              rows="1"
+              placeholder="Message"
+            ></textarea>
+          </div>
+          <button class="composerIcon" id="attachBtn">＋</button>
+          <button class="sendBtn1" id="btnSend">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2 21L23 12L2 3L2 10L17 12L2 14L2 21Z"/>
+            </svg>
+          </button>
+          <div id="emojiPicker" class="emojiPicker hidden">
+
+            <div class="emojiTabs">
+              <button data-cat="smileys">😀</button>
+              <button data-cat="love">❤️</button>
+              <button data-cat="hands">👍</button>
+              <button data-cat="food">🍕</button>
+              <button data-cat="animals">🐶</button>
+              <button data-cat="activities">⚽</button>
+            </div>
+
+            <div id="emojiContainer" class="emojiContainer"></div>
+
+          </div>
+        </div>
+      </main>
+    </div>
+    <main class="screen hidden" id="screenProfile">
+      <div class="profilePage">
+
+        <div id="profileAvatarLarge" class="profileAvatarLarge"></div>
+
+        <div class="profileField">
+          <label>Name</label>
+          <input id="profileName">
+        </div>
+
+        <div class="profileField">
+          <label>Bio</label>
+          <input id="profileBio">
+        </div>
+
+        <div class="profileField">
+          <label>Avatar URL</label>
+          <input id="profileAvatarInput">
+        </div>
+
+        <button class="sendBtn" id="saveProfile">
+          Save
+        </button>
+
+      </div>
+    </main>
+    <div class="modal hidden" id="modal">
+      <div class="modalCard">
+        <div class="modalHeader">
+          <div class="modalTitle" id="modalTitle">—</div>
+          <button class="closeBtn" id="modalClose">✖</button>
+        </div>
+        <div class="modalBody" id="modalBody"></div>
+        <div class="modalFooter" id="modalFooter"></div>
+      </div>
+    </div>
+    <div class="bottomTabs" id="bottomTabs">
+      <button class="segBtn active" data-tab="chats">
+        Chats
+      </button>
+      <button class="segBtn" data-tab="groups">
+        Groups
+      </button>
+      <button class="segBtn" data-tab="contacts">
+        Contacts
+      </button>
+    </div>
+  </div>
+<div id="globalModal" class="global-modal hidden">
+  <div class="global-modal-box">
+
+    <div class="global-modal-header">
+      <span id="globalModalTitle">Mensagem</span>
+      <button class="close-btn" id="globalModalClose">✕</button>
+    </div>
+
+    <div id="globalModalBody" class="global-modal-body"></div>
+
+    <div id="globalModalFooter" class="global-modal-footer"></div>
+
+  </div>
+</div>
+  <script src="app.js"></script>
+</body>
+</html>
